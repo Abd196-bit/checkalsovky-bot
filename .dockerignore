@@ -1,0 +1,9 @@
+.git
+__pycache__/
+*.pyc
+reckless/target/
+stockfish/src/*.o
+stockfish/src/stockfish
+reckless/reckless
+fusedfish-vs-*.pgn
+.DS_Store

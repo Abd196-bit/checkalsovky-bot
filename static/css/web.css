@@ -1,0 +1,156 @@
+:root {
+  --light: #eeeed2;
+  --dark: #769656;
+  --last: rgba(246, 246, 105, 0.55);
+  --select: rgba(186, 202, 43, 0.7);
+  --dot: rgba(0, 0, 0, 0.22);
+  --bg: #302e2b;
+  --text: #ddd;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  padding: 18px;
+}
+
+.app {
+  width: min(94vw, 780px);
+}
+
+.stage {
+  display: grid;
+  grid-template-columns: clamp(22px, 4vw, 34px) 1fr;
+  gap: 10px;
+  align-items: stretch;
+}
+
+.board {
+  width: min(86vw, 700px);
+  aspect-ratio: 1;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  border: 0;
+  outline: 0;
+  user-select: none;
+}
+
+.square {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  min-height: 0;
+  border: 0;
+  outline: 0;
+  padding: 0;
+}
+
+.square:focus,
+.square:focus-visible,
+.square:active {
+  outline: 0;
+}
+
+.square.light {
+  background: var(--light);
+}
+
+.square.dark {
+  background: var(--dark);
+}
+
+.square.last::before,
+.square.selected::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.square.last::before {
+  background: var(--last);
+}
+
+.square.selected::before {
+  background: var(--select);
+}
+
+.square.legal::after {
+  content: "";
+  position: absolute;
+  width: 23%;
+  aspect-ratio: 1;
+  border-radius: 999px;
+  background: var(--dot);
+}
+
+.piece {
+  position: relative;
+  width: 86%;
+  height: 86%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.eval {
+  position: relative;
+  width: 100%;
+  min-height: 0;
+  background: #111;
+  overflow: hidden;
+  border: 0;
+  outline: 0;
+}
+
+.eval-fill {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 50%;
+  background: #f3f0e8;
+  transition: height 220ms ease;
+}
+
+.eval-text {
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  transform: translateX(-50%);
+  color: #111;
+  font-size: 12px;
+  font-weight: 700;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.4);
+}
+
+.status {
+  min-height: 28px;
+  margin-top: 12px;
+  color: #ddd3c3;
+  font-size: 15px;
+  text-align: center;
+}
+
+@media (max-width: 560px) {
+  body {
+    padding: 10px;
+  }
+
+  .stage {
+    gap: 7px;
+  }
+}

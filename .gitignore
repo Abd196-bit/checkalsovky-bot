@@ -1,0 +1,7 @@
+stockfish/src/stockfish
+reckless/reckless
+reckless/target/
+__pycache__/
+*.pyc
+fusedfish-vs-reckless.pgn
+fusedfish-vs-stockfish.pgn
