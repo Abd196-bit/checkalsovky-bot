@@ -37,6 +37,18 @@ Create a new Blueprint from this repo or use the included `render.yaml`.
 Use at least a paid/starter web service. Free services that sleep will make the
 bot unavailable or slow to wake.
 
+### Render Python environment
+
+If you are not using Docker, set:
+
+```bash
+Build Command: pip install -r requirements.txt && ./build.sh
+Start Command: gunicorn -b 0.0.0.0:$PORT --workers 1 --threads 4 --timeout 180 web_server:app
+```
+
+`build.sh` stores Cargo/Rustup caches inside the project so Render's read-only
+system Cargo directory is not used.
+
 ## Hugging Face Spaces
 
 This is the closest free host for this Docker app.

@@ -2,6 +2,11 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+export CARGO_HOME="${CARGO_HOME:-$ROOT/.cargo-home}"
+export RUSTUP_HOME="${RUSTUP_HOME:-$ROOT/.rustup-home}"
+export CARGO_TARGET_DIR="${CARGO_TARGET_DIR:-$ROOT/reckless/target}"
+
+mkdir -p "$CARGO_HOME" "$RUSTUP_HOME" "$CARGO_TARGET_DIR"
 
 echo "Building Stockfish..."
 make -C "$ROOT/stockfish/src" -j"$(sysctl -n hw.ncpu 2>/dev/null || nproc 2>/dev/null || echo 2)" build

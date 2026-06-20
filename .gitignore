@@ -1,6 +1,8 @@
 stockfish/src/stockfish
 reckless/reckless
 reckless/target/
+.cargo-home/
+.rustup-home/
 __pycache__/
 *.pyc
 fusedfish-vs-reckless.pgn
