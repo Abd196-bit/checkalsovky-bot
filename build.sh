@@ -2,7 +2,8 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-export CARGO_HOME="${CARGO_HOME:-$ROOT/.cargo-home}"
+# Render sets CARGO_HOME to /usr/local/cargo, which is read-only during builds.
+export CARGO_HOME="$ROOT/.cargo-home"
 export RUSTUP_HOME="${RUSTUP_HOME:-$ROOT/.rustup-home}"
 export CARGO_TARGET_DIR="${CARGO_TARGET_DIR:-$ROOT/reckless/target}"
 
