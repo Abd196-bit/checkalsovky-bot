@@ -42,12 +42,12 @@ bot unavailable or slow to wake.
 If you are not using Docker, set:
 
 ```bash
-Build Command: pip install -r requirements.txt && ./build.sh
+Build Command: ./render_build.sh
 Start Command: gunicorn -b 0.0.0.0:$PORT --workers 1 --threads 4 --timeout 180 web_server:app
 ```
 
-`build.sh` stores Cargo/Rustup caches inside the project so Render's read-only
-system Cargo directory is not used.
+`render_build.sh` stores Cargo/Rustup caches inside the project so Render's
+read-only system Cargo directory is not used.
 
 ## Hugging Face Spaces
 
