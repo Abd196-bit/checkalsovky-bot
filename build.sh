@@ -13,11 +13,10 @@ echo "Building Stockfish..."
 make -C "$ROOT/stockfish/src" -j"$(sysctl -n hw.ncpu 2>/dev/null || nproc 2>/dev/null || echo 2)" build
 
 echo "Building Reckless..."
-if command -v rustup >/dev/null 2>&1; then
-  rustup run stable make -C "$ROOT/reckless"
-else
-  make -C "$ROOT/reckless"
-fi
+(
+  cd "$ROOT/reckless"
+  cargo rustc --release --no-default-features --bin reckless -- -C target-cpu=native --emit link=reckless
+)
 
 chmod +x "$ROOT/fusedfish.py"
 

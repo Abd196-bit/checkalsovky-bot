@@ -47,7 +47,8 @@ Start Command: gunicorn -b 0.0.0.0:$PORT --workers 1 --threads 4 --timeout 180 w
 ```
 
 `render_build.sh` stores Cargo/Rustup caches inside the project so Render's
-read-only system Cargo directory is not used.
+read-only system Cargo directory is not used. The build compiles Reckless with
+`--no-default-features` so Render does not need `clang`.
 
 ## Hugging Face Spaces
 
